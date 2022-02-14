@@ -12,15 +12,18 @@
 
 void shell_sort(int *array, size_t size)
 {
-	size_t interval = size / 2, x, y;
+	unsigned int interval, x, y;
 	int tmp;
 
-	for (; interval > 0; interval /= 2)
+	for (interval = size / 2; interval > 0; interval /= 2)
 	{
 		for (x = interval; x < size; x += 1)
+		{
 			tmp = array[x];
-		for (y = x; y >= interval && array[y - interval] > tmp; y -= interval)
-			array[y] = array[y - interval];
-		array[y] = temp;
+			for (y = x; y >= interval && array[y - interval] > tmp; y -= interval)
+				array[y] = array[y - interval];
+			array[y] = tmp;
+		}
 	}
+	print_array(array, size);
 }
