@@ -5,6 +5,7 @@
  * @array: array
  * @lowest: lowest number entering
  * @highest: highest number entering
+ * @size: size of array
  *
  * Return: int
  */
@@ -13,12 +14,12 @@ int Lomuto_partition(int *array, int lowest, int highest, size_t size)
 {
 	int pivot = array[highest], x = (lowest - 1), z, y;
 
-	for(z = lowest; z <= highest; z++)
+	for (z = lowest; z <= highest; z++)
 	{
-		if(array[z] <= pivot)
+		if (array[z] <= pivot)
 		{
 			x++;
-			if(x != z)
+			if (x != z)
 			{
 				y = array[x];
 				array[x] = array[z];
@@ -43,7 +44,7 @@ int Lomuto_partition(int *array, int lowest, int highest, size_t size)
 void sort(int *array, int lowest, int highest, size_t size)
 {
 	int pos;
-	
+
 	if (lowest < highest)
 	{
 		pos = Lomuto_partition(array, lowest, highest, size);
@@ -65,7 +66,7 @@ void quick_sort(int *array, size_t size)
 {
 	unsigned int highest = size - 1;
 
-	if(array == NULL || size < 2)
+	if (array == NULL || size < 2)
 		return;
 	sort(array, 0, highest, size);
 }
