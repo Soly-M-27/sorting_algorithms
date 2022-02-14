@@ -8,12 +8,12 @@
  * Return: void
  */
 
-/*void swap(int *a, int *b)
+void swap(int *a, int *b)
 {
 	int tmp = *a;
 	*a = *b;
 	*b = tmp;
-}*/
+}
 
 /**
  * selection_sort - Function that sorts an array of integers
@@ -26,8 +26,7 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t a, b, min;
-	int tmp;
+	unsigned int a, b, min;
 
 	for (a = 0; a < size - 1; a++)
 	{
@@ -37,9 +36,7 @@ void selection_sort(int *array, size_t size)
 			if (array[b] < array[min])
 				min = b;
 		}
-		tmp = array[min];
-		array[min] = array[a];
-		array[a] = tmp;
+		swap(&array[min], &array[a]);
 		print_array(array, size);
 	}
 }
